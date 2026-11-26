@@ -19,14 +19,14 @@ bool eh_igual(no_t *a1, no_t* a2){
 	if(a1 == a2 && a1 == NULL){
 		return true;
 	}
-	
-	eh_igual(a1->esq->val, a2->esq->val);
-	eh_igual(a1->dir->val, a2->dir->val); //pos ordem 
-	if(a1->val == a2->val){
-		return true;
+	if(a1 == NULL || a2 == NULL) {
+		return false;
 	}
+	
+	bool esq = eh_igual(a1->esq, a2->esq);
+	bool dir = eh_igual(a1->dir, a2->dir); //pos ordem 
 
-	return false;
+	return esq && dir && a1->val == a2->val;
 }
 
 // Funcao que dada uma arvore, deve retornar a quantidade de nos
